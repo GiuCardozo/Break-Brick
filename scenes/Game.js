@@ -10,7 +10,7 @@ export default class Game extends Phaser.Scene {
   }
   create() {
     // crear pala como rectangulo
-    this.paddle = this.add.rectangle(400, 700, 100, 20, 0xFFFFFF);
+    this.paddle = this.add.rectangle(400, 700, 150, 20, 0xFFFFFF);
     //se le agrega fisicas a la pala
     this.physics.add.existing(this.paddle);
     //hacer la paleta inamovible
@@ -36,7 +36,7 @@ export default class Game extends Phaser.Scene {
     for (let i = 0; i < 10; i++) {
       const x = 100 + i * 90; // Ajustar la posición x
       const y = 80;
-      const obstacle = this.add.rectangle(x, y, 60, 10, 0x66ff66);
+      const obstacle = this.add.rectangle(x, y, 80, 40, 0xFFFFFF);
       this.physics.add.existing(obstacle); // Agregar físicas al obstáculo
       obstacle.body.setImmovable(true); // Hacer que los obstáculos sean inamovibles
       this.obstacles.add(obstacle);
@@ -59,7 +59,7 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(
       this.ball,
       this.obstacles,
-      this.handleCollision,
+      this.BallColision,
       null,
       this
     );
@@ -75,7 +75,6 @@ export default class Game extends Phaser.Scene {
     //colision de la pelota con el limite inferior
     this.physics.world.on("worldbounds", (body, up, down, left, right) => {
       if (down) {
-        console.log("hit bottom");
         this.scene.start("GameOver");
       }
     });
@@ -92,7 +91,7 @@ export default class Game extends Phaser.Scene {
     }
   }
 
-  handleCollision = (ball, obstacle) => {
+  BallColision = (ball, obstacle) => {
     console.log("collision");
     this.score++;
     this.textScore.setText(` ${this.score}`);
