@@ -1,5 +1,5 @@
 import Game from "./scenes/Game.js";
-import End from "./GameOver.js";
+import End from "./scenes/GameOver.js";
 
 // Create a new Phaser config object
 const config = {
@@ -14,7 +14,7 @@ const config = {
     default: "arcade",
     arcade: {
       gravity: { y: 0 },
-      debug: true,
+      debug: false,
     },
   },
   // List of scenes to load

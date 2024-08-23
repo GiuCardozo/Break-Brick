@@ -67,7 +67,7 @@ export default class Game extends Phaser.Scene {
     //se agrega score
     this.textScore = this.add
       .text(this.game.config.width - 10, 10, "0", {
-        fontSize: "70px",
+        fontSize: "50px",
         fill: "#fff",
       })
       .setOrigin(1, 0);
